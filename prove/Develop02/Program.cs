@@ -1,5 +1,5 @@
 //  exceeding requierement I add a 5. enter in menu 'save and replace' (erase the data in the file before saving)
-//  when you load journal and write data before saving 
+//  when you load journal and write data before saving
 //  which differ from 4. 'save and add' who only append all datas of journal in file 
 
 using System;
@@ -68,7 +68,7 @@ class Program
             //save add
             else if(answer == "4")
             {
-                Console.Write("In which file do you want to save it (append) (journal.txt already exists for grader)? ");
+                Console.Write("In which file do you want to save it (append) (journal.txt already exists)? ");
                 string fileName = Console.ReadLine();
                 journal1.SaveToFile(fileName);
                 Console.WriteLine($"The journal is saved in {fileName}");
