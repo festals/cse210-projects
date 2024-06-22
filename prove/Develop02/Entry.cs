@@ -6,7 +6,12 @@ public class Entry
 
     public void DisplayEntry()
     {
-        Console.WriteLine($"Date: {_date} - Prompt: {_promptText}");
-        Console.WriteLine(_entryText);
+        Console.WriteLine($"Date: {_date} - Prompt: {_promptText} \n{_entryText}");
+    }
+
+    public string StringEntry ()
+    {
+
+        return _date+","+_promptText+","+_entryText; 
     }
 }

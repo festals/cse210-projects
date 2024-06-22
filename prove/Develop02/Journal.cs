@@ -2,51 +2,69 @@ using System.ComponentModel;
 using System.IO; 
 public class Journal
 {
-    public List<Entry> entries = new List<Entry>();
+    public List<Entry> _entries = new List<Entry>();
  
-    public void AddEntry()
+    public void AddEntry(Entry lEntry)
     {
-        entries.Add(Entry._date);
+        _entries.Add(lEntry);
     }
 
     public void DisplayAll()
     {
         Console.WriteLine("");
-         foreach (Entry entry in entries)
+        foreach (Entry e in _entries)
         {
-            entry.DisplayEntry();
+            e.DisplayEntry();
         }
     }
 
-
-    public void LoadFromFile(filename)
+    public void ClearEntry()
     {
-        string filename = "myFile.txt";
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        _entries.Clear();
+    }    
 
-        foreach (string line in lines)
+    public void LoadFromFile(string fileName, Journal journalLocal)
+    {
+        string[] fileLines = System.IO.File.ReadAllLines(fileName);
+
+        foreach (string line in fileLines)
         {
             string[] parts = line.Split(",");
 
-            string date = parts[0];
-            string promptText = parts[1];
-            string entryText = parts[2];
+            Entry entry1 = new Entry();
+
+            entry1._date = parts[0];
+            entry1._promptText = parts[1];
+            entry1._entryText = parts[2];
+
+            journalLocal.AddEntry(entry1);
+
+            entry1 = null;
         }
     }
 
-    public void SaveToFile(List<Entry> entries)
+    public void SaveToFileReplace(string fileName)
     {
-        string filename = "journal.txt";
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(fileName))
         {
-            foreach (Entry e in entries)
+            foreach (Entry e in _entries)
             {
-                outputFile.WriteLine();
+                outputFile.WriteLine(e.StringEntry());
             }
         }
     }
 
-
+    public void SaveToFile(string fileName)
+    {
+        FileStream ostrm = new FileStream(fileName, FileMode.Append, FileAccess.Write);
+        using (StreamWriter outputFile = new StreamWriter(ostrm))
+        {              
+            foreach (Entry e in _entries)
+            {
+                outputFile.WriteLine(e.StringEntry());
+            }
+        }
+    }
 }
 
 
