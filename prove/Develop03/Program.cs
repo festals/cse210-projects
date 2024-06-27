@@ -9,7 +9,6 @@ class Program
 
         do
         {
-            
             Console.Write("Press enter to continue or type 'quit' to finish: ");
             answer = Console.ReadLine();
             
