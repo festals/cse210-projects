@@ -1,32 +1,35 @@
 public class Word
 {
     private string _text;
+    private string _textDisplayed;
     private bool _isHidden;
 
 
-    public Word(string text)
+    public Word(string text)  //text contains one word
     {
-        _text = text;
+        _text = text; 
     }
 
 
-    public void Hide()
+    public void Hide()  //
     {
-
+        _textDisplayed = "___";
+        _isHidden = true;
     }
 
     public void Show()
     {
-
+        _textDisplayed = _text;
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return false;
+        return _isHidden;
     }
 
-    public string GetDisplayText()
+    public string GetDisplayText()  //return ___ if hidden or text not hidden
     {
-        return "";
+        return _textDisplayed;
     }
 }
