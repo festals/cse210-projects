@@ -7,7 +7,8 @@ class Program
     {
         string answer;
         string txtScripture;
-
+        
+        // instancie reference et scripture
         Reference myReference = new Reference("D&C",121,36);
         txtScripture = "That the rights of the priesthood are inseparably connected with the powers of heaven, and that the powers of heaven cannot be controlled nor handled only upon the principles of righteousness";
 
@@ -17,13 +18,16 @@ class Program
         {
             //clean screen
             Console.Clear();
+
+
+            Console.Write(myReference.GetDisplayText());
             //display scripture not hidden
             Console.WriteLine(myScripture.GetDisplayText());
             
             Console.Write("Press enter to continue or type 'quit' to finish: ");
             answer = Console.ReadLine();
 
-            //supprimer des mots de leciture  
+            //hide words from scripture  
             myScripture.HideRandomWords(3);
 
 

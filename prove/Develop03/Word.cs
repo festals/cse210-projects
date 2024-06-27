@@ -8,6 +8,7 @@ public class Word
     public Word(string text)  //text contains one word
     {
         _text = text; 
+        _textDisplayed = text;
     }
 
 
@@ -31,5 +32,10 @@ public class Word
     public string GetDisplayText()  //return ___ if hidden or text not hidden
     {
         return _textDisplayed;
+    }
+
+    public void SetWord(string mot)
+    {
+        _text = mot;
     }
 }
