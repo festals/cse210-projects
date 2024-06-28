@@ -15,32 +15,37 @@ public class Scripture
         // transform text in word list
         //
 
-        text = "le chien est beau";
-
-        // si vide arret duu traitement
-
         //recherche du blanc
+        int previousBlankIndex = 0;
         int blankIndex;
-        blankIndex = text.IndexOf(" ");
+
+        // si chaine vide ou blanc au bout de la chaine
+        //recherche du blanc suivant
+        //si pas de blanc, cets un seul mot
+        //sinon extrait mot entre blanc preced et nv blanc
+        // et blanc precednt = nv blanc
         
-        Word myWord = new Word("");
-        // si " " pas trouvé = 1 seule mot
-        if (blankIndex == -1)
+        while(previousBlankIndex <= text.Length)
         {
-            myWord.SetWord(text); 
-            _words.Add(myWord);
+            blankIndex = text.IndexOf(" ", previousBlankIndex);
+            
+            Word myWord = new Word("");
+            
+            // si " " pas trouvé = 1 seule mot
+            if (blankIndex == -1)
+            {
+                myWord.SetWord(text.Substring(previousBlankIndex, text.Length - previousBlankIndex)); 
+                _words.Add(myWord);
+                previousBlankIndex = text.Length +1 ;
+            }
+            // sinon le mot se trouve entre position previousblankindex et blankIndex
+            else 
+            {
+                myWord.SetWord(text.Substring(previousBlankIndex, blankIndex - previousBlankIndex)); 
+                _words.Add(myWord);
+                previousBlankIndex = blankIndex +1;
+            }
         }
-        // sinon le 1er mot se trouve entre position 0 et blankIndex
-        else 
-        {
-            myWord.SetWord(text.Substring(0, blankIndex)); 
-            _words.Add(myWord);
-        }
-
-        myWord.SetWord("chien"); 
-        _words.Add(myWord);
-        myWord = null;
-
         
     }
 
@@ -48,9 +53,21 @@ public class Scripture
     public void HideRandomWords(int numberToHide) 
     //select randomly one number between 0 and the list.length
     // recupere le mot et cache le
-    //mot.hide
     {
-        _words[0].Hide();
+        bool flagVisibled;
+
+        for (int i = 1; i <= numberToHide; i++)
+        {
+            Random rnd = new Random();
+            int randomNumber = rnd.Next(0, _words.Count);
+            flagVisibled =_words[randomNumber].Hide();
+
+            //si le mot était deja caché alors on recommence en decalant numberToHide, sauf si tous les mots sont cachés
+            if (flagVisibled == false && numberToHide <= _words.Count)
+            {
+                numberToHide ++;
+            }    
+        }
     }
 
     public string GetDisplayText()
@@ -61,7 +78,7 @@ public class Scripture
         foreach (var word in _words)
         {
             localText += $"{word.GetDisplayText()} ";
-            Console.WriteLine(word.GetDisplayText());
+            //Console.WriteLine(word.GetDisplayText());
         }
         return localText;
     }

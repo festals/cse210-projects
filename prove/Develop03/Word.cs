@@ -1,4 +1,6 @@
-public class Word
+
+
+public class Word 
 {
     private string _text;
     private string _textDisplayed;
@@ -12,10 +14,18 @@ public class Word
     }
 
 
-    public void Hide()  //
+    public bool Hide()  // return true if _text was not hidden
     {
-        _textDisplayed = "___";
-        _isHidden = true;
+        bool flag = false;
+
+        if (_isHidden == false)
+        {
+            _textDisplayed = new string('_', _text.Length);
+            _isHidden = true;
+            flag = true;
+        }
+
+        return flag;
     }
 
     public void Show()
@@ -37,5 +47,6 @@ public class Word
     public void SetWord(string mot)
     {
         _text = mot;
+        _textDisplayed = mot;
     }
 }
