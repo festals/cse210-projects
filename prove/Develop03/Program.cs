@@ -18,7 +18,11 @@ class Program
         
         // instancie reference et scripture
         Reference myReference = new Reference("D&C",121,36);
-        txtScripture = "That the rights of the priesthood are inseparably connected with the powers of heaven, and that the powers of heaven cannot be controlled nor handled only upon the principles of righteousness";
+        txtScripture = "That the rights of the priesthood are inseparably connected with the powers of heaven, and that the powers of heaven cannot be controlled nor handled only upon the principles of righteousness.";
+
+        // if you want to test with multiple verses
+        //Reference myReference = new Reference("D&C",121,34,36);
+        //txtScripture = "Behold, there are many called, but few are chosen. And why are they not chosen? \nBecause their hearts are set so much upon the things of this world, and aspire to the honors of men, that they do not learn this one lesson \nThat the rights of the priesthood are inseparably connected with the powers of heaven, and that the powers of heaven cannot be controlled nor handled only upon the principles of righteousness.";
 
         Scripture myScripture = new Scripture(myReference,txtScripture);
         
