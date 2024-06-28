@@ -1,4 +1,5 @@
 // for exceeding requierement when pressing enter I randomly select from only those words that are not already hidden 
+// I also ask the user for the number of words they want to hide
 
 
 
@@ -12,8 +13,8 @@ class Program
     {
         string answer;
         string txtScripture;
-        // string txtNumberToHide;
-        // int numberToHide = 3;
+        string txtNumberToHide;
+        int numberToHide;
         
         // instancie reference et scripture
         Reference myReference = new Reference("D&C",121,36);
@@ -21,20 +22,22 @@ class Program
 
         Scripture myScripture = new Scripture(myReference,txtScripture);
         
-        // ask user for number of word they want to hide at a time (3 by default)
-        // Console.Write("How many words do you want to be simultanely hidden each time you press enter? (3 by default): ");
-        // txtNumberToHide = Console.ReadLine();
+        //ask user for number of word they want to hide at a time (3 by default)
+        Console.Clear();
+        Console.Write("How many words do you want to be simultanely hidden each time you press enter? (3 by default): ");
+        txtNumberToHide = Console.ReadLine();
 
-        // // si num , on convertit en int sinoon 3
-        // if ( int.TryParse(txtNumberToHide, out numberToHide))
-        // {
-        //     numberToHide = Int32.Parse(txtNumberToHide);
-        // }
+        // si num , on convertit en int sinoon 3
+        if ( int.TryParse(txtNumberToHide, out numberToHide))
+        {
+            numberToHide = Int32.Parse(txtNumberToHide);
+            numberToHide = Math.Abs(numberToHide);
+        }
         
-        // if (numberToHide == 0)
-        // {
-        //     numberToHide = 3;
-        // }
+        if (numberToHide == 0)
+        {
+            numberToHide = 3;
+        }
         
 
         // affiche et reaffiche la phrase encachant des mots 
@@ -52,7 +55,7 @@ class Program
             answer = Console.ReadLine();
 
             //hide words from scripture  
-            myScripture.HideRandomWords(3);
+            myScripture.HideRandomWords(numberToHide);
 
 
 

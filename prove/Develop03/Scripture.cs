@@ -51,22 +51,29 @@ public class Scripture
 
 
     public void HideRandomWords(int numberToHide) 
-    //select randomly one number between 0 and the list.length
-    // recupere le mot et cache le
+    
     {
         bool flagVisibled;
 
         for (int i = 1; i <= numberToHide; i++)
         {
+            //select randomly one number between 0 and the list.length
+            // recupere le mot et cache le        
             Random rnd = new Random();
             int randomNumber = rnd.Next(0, _words.Count);
             flagVisibled =_words[randomNumber].Hide();
 
-            //si le mot était deja caché alors on recommence en decalant numberToHide, sauf si tous les mots sont cachés
-            if (flagVisibled == false && numberToHide <= _words.Count)
+            //si le mot était deja caché alors on recommence en decalant numberToHide
+            if (flagVisibled == false)
             {
                 numberToHide ++;
-            }    
+            }   
+
+            // si tous les mots sont cachés on arrete
+            if (IsCompletelyHidden() == true)
+            {
+                numberToHide = 0;
+            }
         }
     }
 
