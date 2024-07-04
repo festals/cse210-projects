@@ -10,31 +10,34 @@ class Program
 
         do
         {
-            Console.Clear();
             Activity myActivity = new Activity();
+            BreathingActivity myBreathing = new BreathingActivity();
+            ListingActivity myListing = new ListingActivity();
+            ReflectingActivity myReflecting = new ReflectingActivity();
 
-            myActivity.ShowSpinner(30);
+            Console.Clear();
+
             Console.WriteLine("Menu Options:");
-            Console.WriteLine("1.Start breathing activity");  // 
-            Console.WriteLine("2. Start reflecting activity");    // 
-            Console.WriteLine("3. Start listing activity");       // 
-            Console.WriteLine("4. Quit");   //
+            Console.WriteLine("     1.Start breathing activity");  // 
+            Console.WriteLine("     2. Start reflecting activity");    // 
+            Console.WriteLine("     3. Start listing activity");       // 
+            Console.WriteLine("     4. Quit");   //
             Console.Write("Select a choice from the menu: ");
             answer = Console.ReadLine();
 
             if (answer == "1")
             {
-
+                myBreathing.Run();
             }
 
             if (answer == "2")
             {
-
+                myReflecting.Run();
             }
 
             if (answer == "3")
             {
-
+                myListing.Run();
             } 
 
         }while(answer != "4");

@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 public class BreathingActivity: Activity
 {
     public BreathingActivity()
@@ -9,6 +11,22 @@ public class BreathingActivity: Activity
 
     public void Run()
     {
-        
+
+
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(_duration);
+
+        DisplayStartingMessage();
+
+        while(DateTime.Now < futureTime)
+        {
+            Console.Write("\nBreathe in...");
+            ShowCountDown(4);
+            Console.Write("Now breathe out...\n");
+            ShowCountDown(4);
+        }  
+
+        DisplayEndingMessage();  
     }
+        
 }

@@ -15,6 +15,20 @@ public class ListingActivity: Activity
     public void Run()
     {
 
+        DisplayStartingMessage();
+        
+        Console.WriteLine("List as many responses you can to the following prompt:");
+        GetRandomPrompt();
+        Console.Write("You may begin in:");
+        ShowCountDown(5);
+
+        // for the duration of the activity a you can type responses until no more time
+
+        string responses = Console.ReadLine();
+
+        Console.WriteLine($"You listed {_count} items!");
+
+        DisplayEndingMessage();
     }
 
     public void GetRandomPrompt()

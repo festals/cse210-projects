@@ -12,6 +12,22 @@ public class ReflectingActivity: Activity
         _questions = new List<string>();
     }
 
+    public void Run()
+    {
+        DisplayStartingMessage();
+
+        Console.WriteLine("Consider the following prompt:");
+        DisplayPrompt();
+        Console.Write("When you have something in mind, press enter to continue.");
+        Console.ReadLine();
+        Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
+        DisplayQuestions();
+
+        Console.WriteLine();
+        DisplayEndingMessage();
+    
+    }
+
      public string GetRandomPrompt()
         {
             _prompts.Add("Think of a time you did something really difficult.");
@@ -48,11 +64,21 @@ public class ReflectingActivity: Activity
 
         public void DisplayPrompt()
         {
-
+            Console.WriteLine();
+            Console.Write($"---{GetRandomPrompt()}---");
+            Console.WriteLine();
         }
 
         public void DisplayQuestions()
         {
-            
+            Console.Clear();
+
+            DateTime startTime = DateTime.Now;
+            DateTime futureTime = startTime.AddSeconds(_duration);
+            while(DateTime.Now< futureTime)
+            {
+                Console.Write($"\n> {GetRandomQuestions()}");
+                ShowSpinner(8);
+            }
         }
 }
