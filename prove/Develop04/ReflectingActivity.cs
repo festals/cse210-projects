@@ -10,22 +10,24 @@ public class ReflectingActivity: Activity
         _duration = 50;
         _prompts = new List<string>();
         _questions = new List<string>();
+        _totalDuration = 0;
     }
 
     public void Run()
     {
         DisplayStartingMessage();
 
+        //add to totalDuration for final stat
+        _totalDuration += _duration;
+
         Console.WriteLine("Consider the following prompt:");
         DisplayPrompt();
-        Console.Write("When you have something in mind, press enter to continue.");
+        Console.Write("\nWhen you have something in mind, press enter to continue. ");
         Console.ReadLine();
         Console.WriteLine("\nNow ponder on each of the following questions as they related to this experience.");
         DisplayQuestions();
 
-        Console.WriteLine();
         DisplayEndingMessage();
-    
     }
 
      public string GetRandomPrompt()

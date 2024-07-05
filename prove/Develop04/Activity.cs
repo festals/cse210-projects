@@ -3,34 +3,35 @@ public class Activity
     protected string _name;
     protected string _description;
     protected int _duration;
+    protected int _totalDuration;
 
     public Activity()
     {
        _name = "";
        _description = "";
        _duration = 0;
+       _totalDuration =0;
     }
 
     public void DisplayStartingMessage()
     {
-        Activity myActivity = new Activity(); 
+        Console.Clear();
 
         Console.WriteLine($"Welcome to the {_name} Activity.");
         Console.WriteLine(_description);
-        Console.Write($"How long, in seconds, would you like for your session? ");
+        Console.Write($"\nHow long, in seconds, would you like for your session? ");
         _duration = Int32.Parse(Console.ReadLine());
 
         Console.Clear();
 
         Console.WriteLine("Get ready...");
-        myActivity.ShowSpinner(5);
-
+        ShowSpinner(2);
     }
 
     public void DisplayEndingMessage()
     {
-        Console.WriteLine("Well done!!");
-        ShowSpinner(5);
+        Console.WriteLine("\n \nWell done!!");
+        ShowSpinner(2);
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name} Activity.");
         ShowSpinner(5);
     }
@@ -51,6 +52,10 @@ public class Activity
         {
             foreach (string s in animationStrings)
             {
+                if(DateTime.Now >= futureTime)
+                {
+                    break;
+                }
                 Console.Write(s);
                 Thread.Sleep(700);
                 Console.Write("\b \b");
@@ -67,4 +72,10 @@ public class Activity
             Console.Write("\b \b");
         } 
     }
+
+    public int GetTotalDuration()
+    {
+        return _totalDuration;
+    }
+
 }
