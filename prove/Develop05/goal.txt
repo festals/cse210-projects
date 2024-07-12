@@ -1,0 +1,5 @@
+0
+SimpleGoal,hu,ju,10,False
+EternalGoal,fer,fer,20
+SimpleGoal,kii,kiki,4,True
+ChecklistGoal,huu,check,5,2,4,4
