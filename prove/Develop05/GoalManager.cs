@@ -111,7 +111,22 @@ public class GoalManager
     //ask which
     // 1. 
     {
+        
 
+        // if checklist is completed 
+        DateTime startTime = DateTime.Now;
+        DateTime futureTime = startTime.AddSeconds(10);
+
+        do
+        {
+            if(DateTime.Now >= futureTime)
+            {
+                break;
+            }
+            Console.Write("🌟");
+            Thread.Sleep(700);
+            Console.Write("\b \b");
+        }while(DateTime.Now < futureTime);
     }
 
     public void SaveGoal()
