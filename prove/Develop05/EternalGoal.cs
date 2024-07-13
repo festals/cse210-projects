@@ -9,19 +9,13 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-        
+        Console.WriteLine($"\nCongratulations! you have earned {_points} points!");
     }
 
     public override bool IsComplete()
     {
         return false;
     }
-
-    public override void SetComplete(int complete)
-    {
-        return;
-    }
-
 
     public override string GetStringRepresentation()
     {

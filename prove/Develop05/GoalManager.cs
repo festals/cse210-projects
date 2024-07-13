@@ -1,5 +1,9 @@
 using System.Data;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using System;
+
 public class GoalManager
 {
     private List<Goal> goals = new List<Goal>();
@@ -14,19 +18,92 @@ public class GoalManager
     public void Start()
     // menu principal
     {
+        string answer;
+        bool flagMenu = true;
 
+        do
+        {
+            
+            if (flagMenu == false)
+            {
+                Console.WriteLine("You can only type 1, 2, 3, 4, 5 or 6");
+            }
+            
+            DisplayPlayerInfo();
+            
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("     1. Create New Goal");  // 
+            Console.WriteLine("     2. List Goals");    // 
+            Console.WriteLine("     3. Save Goals");       // 
+            Console.WriteLine("     4. Load Goals");       // 
+            Console.WriteLine("     5. Record Events");       // 
+            Console.WriteLine("     6. Quit");   //
+            Console.Write("Select a choice from the menu: ");
+            answer = Console.ReadLine();
+            flagMenu = true;
+
+            if (answer == "1")
+            {
+                CreateGoal();
+            }
+
+            else if (answer == "2")
+            {
+                ListGoalDetails();
+            }
+
+            else if (answer == "3")
+            {
+                SaveGoal();
+            }
+
+            else if (answer == "4")
+            {
+                LoadGoal();
+            }
+
+            else if (answer == "5")
+            {
+                RecordEvent();
+            }
+
+
+            else if (answer != "6")
+            {
+                flagMenu = false;
+
+            }
+
+        } while (answer != "6");
+
+        Console.WriteLine("\nBye-Bye\n");
     }
 
     public void DisplayPlayerInfo()
     //display points (score) 
     {
-
+        Console.WriteLine($"You have {_score} points.");
+        Console.WriteLine();
     }
 
     public void ListGoalNames()
     // display list name goal before recording event(menu 5.)
     {
+        Console.WriteLine("The Goals are: ");
 
+        //if goal are completed they don't show in this list
+
+        int i = 1;
+        foreach (Goal g in goals)
+        {
+            if (g.IsComplete() == false)
+            {
+                Console.WriteLine($"{i}. {g.GetName()}");
+            }
+            i++;
+        }
+
+        Console.WriteLine();
     }
 
     public void ListGoalDetails()
@@ -34,9 +111,11 @@ public class GoalManager
     {
         Console.WriteLine("Your Goals are: ");
 
+        int i = 1;
         foreach (Goal g in goals)
         {
-            Console.WriteLine(g.GetStringRepresentation());
+            Console.WriteLine($"{i}. {g.GetStringRepresentation()}");
+            i++;
         }
 
         Console.WriteLine();
@@ -59,8 +138,8 @@ public class GoalManager
 
 
 
-        Console.WriteLine("The types of Goals are:");
-        Console.WriteLine("     1.Simple Goal");  // 
+        Console.WriteLine("\nThe types of Goals are:");
+        Console.WriteLine("     1. Simple Goal");  // 
         Console.WriteLine("     2. Eternal Goal");    // 
         Console.WriteLine("     3. Checklist Goal");         //
         Console.Write("Select a choice from the menu: ");
@@ -104,29 +183,34 @@ public class GoalManager
 
             goals.Add(myChecklist);
         }
+
+        Console.WriteLine();
     }
 
     public void RecordEvent()
-    // display list goal (listgoalname)
+    // display list goal (listgoalname) with number 
     //ask which
-    // 1. 
+    // Congratulations! you have earned {points (+bonus)} points!
+    // You have now {_score} points
+    //  
     {
-        
+        int number;
 
-        // if checklist is completed 
-        DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(10);
+        ListGoalNames();
+        Console.Write("Which Goal did you accomplish? ");
+        number = Int32.Parse(Console.ReadLine());
 
-        do
-        {
-            if(DateTime.Now >= futureTime)
-            {
-                break;
-            }
-            Console.Write("🌟");
-            Thread.Sleep(700);
-            Console.Write("\b \b");
-        }while(DateTime.Now < futureTime);
+        // utiliser number to get the goal
+        Goal myGoal = goals[number - 1];
+
+        myGoal.RecordEvent();
+
+        //ajouter les points
+        _score += Int32.Parse(myGoal.GetPoints());
+
+        Console.WriteLine($"You have now {_score} points");
+
+        Console.WriteLine();
     }
 
     public void SaveGoal()
@@ -147,6 +231,7 @@ public class GoalManager
         }
 
         Console.WriteLine($"The Goal is saved in {fileName}");
+        Console.WriteLine();
     }
 
     public void LoadGoal()
@@ -219,6 +304,8 @@ public class GoalManager
                 }
             }
         }
+
+        Console.WriteLine();
     }
 
 }

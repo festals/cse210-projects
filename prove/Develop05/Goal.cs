@@ -15,7 +15,10 @@ public abstract class Goal
 
     public abstract bool IsComplete();
 
-    public abstract void SetComplete(int complete);
+    public virtual void SetComplete(int complete)
+    {
+
+    }
 
     public virtual string GetDetailsString()
     {
@@ -25,4 +28,14 @@ public abstract class Goal
     public abstract string GetStringRepresentation();
 
     public abstract string GetStringCsv();
+
+    public string GetName()
+    {
+        return _shortName; 
+    } 
+       
+    public string GetPoints()
+    {
+        return _points;
+    }
 }

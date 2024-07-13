@@ -1,0 +1,4 @@
+35
+SimpleGoal,give a talk,speak in church when asked ,10,False
+EternalGoal,read scriptures,at least 10 min a day,15
+ChecklistGoal,go to the temple,go to temple to do any sacrament,20,100,3,1
