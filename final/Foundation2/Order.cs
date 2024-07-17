@@ -10,7 +10,7 @@ public class Order
         _customers = myCustomer;
     }
 
-    public void DisplayTotalCost()
+    public float DisplayTotalCost()
     {
         float totalPrice = 0;
 
@@ -21,11 +21,11 @@ public class Order
 
         if(_customers.FromUsa() == true)
         {
-            Console.WriteLine($"${totalPrice + 5}");
+            return totalPrice + 5;
         }
         else
         {
-            Console.WriteLine($"${totalPrice + 35}");
+            return totalPrice + 35;
         }
 
     }

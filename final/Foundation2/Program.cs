@@ -25,7 +25,7 @@ class Program
         // and the total price of the order,
         Console.WriteLine(ord1.DisplayPackingLabel());
         Console.WriteLine(ord1.DisplayShippingLabel());
-        ord1.DisplayTotalCost();
+        Console.WriteLine($"${ord1.DisplayTotalCost()}");
 
 
         Console.WriteLine();
@@ -48,7 +48,7 @@ class Program
         // and the total price of the order,
         Console.WriteLine(ord2.DisplayPackingLabel());
         Console.WriteLine(ord2.DisplayShippingLabel());
-        ord2.DisplayTotalCost();
+        Console.WriteLine($"${ord2.DisplayTotalCost()}");
 
 
 
