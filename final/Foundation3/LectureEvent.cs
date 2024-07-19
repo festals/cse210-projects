@@ -9,8 +9,13 @@ public class LectureEvent : Event
         _capacity = capacity;
     }
 
+    public string GetTypeEvent()
+    {
+        return "Lecture";
+    }
+
     public string FullDetails()
     {
-        return "";
+        return $"Lecture: '{_title}' by {_speaker}\n{_description}\nCapacity: {_capacity} seats\nThe {_date} at {_time}\n{_address}";
     }
 }

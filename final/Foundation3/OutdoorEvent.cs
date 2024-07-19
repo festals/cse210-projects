@@ -7,8 +7,13 @@ public class OutdoorEvent : Event
         _weather = weather;
     }
 
+    public string GetTypeEvent()
+    {
+        return "Outdoor";
+    }
+
     public string FullDetails()
     {
-        return "";
+        return $"Outdoor: '{_title}':{_description}\nThe {_date} at {_time}\n{_address}\nPlease be aware that it will be {_weather} and dress accordingly.";
     }
 }

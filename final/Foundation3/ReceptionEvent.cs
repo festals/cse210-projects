@@ -7,8 +7,14 @@ public class ReceptionEvent : Event
         _email = email;
     }
 
+    public string GetTypeEvent()
+    {
+        return "Reception";
+    }
+
+
     public string FullDetails()
     {
-        return "";
+        return $"Reception: '{_title}':{_description}\nThe {_date} at {_time}\n{_address}\nRSVP at {_email}";
     }
 }

@@ -17,14 +17,20 @@ public class Event
         _address = address;
     }
 
+    public string GetStrAddress()
+    {
+        return _address.DisplayAddress();
+    }
+
+
     public string DisplayStdDetails()
     {
-        return "";
+        return $"'{_title}': {_description}\nThe {_date} at {_time}\n{_address}";
     }
 
         public string DisplayShortDescription()
     {
-        return "";
+        return $": '{_title}', the {_date}";
     }
 
 }
