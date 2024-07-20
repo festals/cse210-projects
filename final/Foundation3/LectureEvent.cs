@@ -16,6 +16,6 @@ public class LectureEvent : Event
 
     public string FullDetails()
     {
-        return $"Lecture: '{_title}' by {_speaker}\n{_description}\nCapacity: {_capacity} seats\nThe {_date} at {_time}\n{_address}";
+        return $"Lecture: '{_title}' by {_speaker}\n{_description}\nCapacity: {_capacity} seats\nThe {_date} at {_time}\n{GetStrAddress()}";
     }
 }

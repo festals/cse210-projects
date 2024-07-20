@@ -1,4 +1,3 @@
-using System.Net.Sockets;
 
 public class Event
 {
@@ -25,7 +24,7 @@ public class Event
 
     public string DisplayStdDetails()
     {
-        return $"'{_title}': {_description}\nThe {_date} at {_time}\n{_address}";
+        return $"'{_title}': {_description}\nThe {_date} at {_time}\n{GetStrAddress()}";
     }
 
         public string DisplayShortDescription()
