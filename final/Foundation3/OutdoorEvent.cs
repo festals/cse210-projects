@@ -14,6 +14,6 @@ public class OutdoorEvent : Event
 
     public string FullDetails()
     {
-        return $"Outdoor: '{_title}':{_description}\nThe {_date} at {_time}\n{GetStrAddress()}\nPlease be aware that it will be {_weather} and dress accordingly.";
+        return $"Outdoor: '{_title}':{_description}\nThe {_date} at {_time}\n{GetStrAddress()}\nPlease be aware that it will be {_weather} and dress accordingly.\n";
     }
 }

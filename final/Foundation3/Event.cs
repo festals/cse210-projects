@@ -24,12 +24,12 @@ public class Event
 
     public string DisplayStdDetails()
     {
-        return $"'{_title}': {_description}\nThe {_date} at {_time}\n{GetStrAddress()}";
+        return $"Standard Details: '{_title}': {_description}\nThe {_date} at {_time}\n{GetStrAddress()}\n";
     }
 
         public string DisplayShortDescription()
     {
-        return $": '{_title}', the {_date}";
+        return $"Short Description: : '{_title}', the {_date}\n";
     }
 
 }

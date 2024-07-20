@@ -15,6 +15,6 @@ public class ReceptionEvent : Event
 
     public string FullDetails()
     {
-        return $"Reception: '{_title}':{_description}\nThe {_date} at {_time}\n{GetStrAddress()}\nRSVP at {_email}";
+        return $"Reception: '{_title}':{_description}\nThe {_date} at {_time}\n{GetStrAddress()}\nRSVP at {_email}\n";
     }
 }
