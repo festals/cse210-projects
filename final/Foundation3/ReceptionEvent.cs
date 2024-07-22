@@ -5,16 +5,18 @@ public class ReceptionEvent : Event
     public ReceptionEvent(string title, string description, string date, string time, Address address, string email) : base (title,description,date,time,address)
     {
         _email = email;
+        SetTypeEvent();
+        FullDetails();
     }
 
-    public string GetTypeEvent()
+    public void SetTypeEvent()
     {
-        return "Reception";
+        _type = "Reception";
     }
 
 
-    public string FullDetails()
+    public void FullDetails()
     {
-        return $"Reception: '{_title}':{_description}\nThe {_date} at {_time}\n{GetStrAddress()}\nRSVP at {_email}\n";
+        _fullDetail = $"Full Details:\nReception: '{_title}':{_description}\nThe {_date} at {_time}\n{GetStrAddress()}\nRSVP at {_email}\n";
     }
 }

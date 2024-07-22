@@ -7,15 +7,17 @@ public class LectureEvent : Event
     {
         _speaker = speaker;
         _capacity = capacity;
+        SetTypeEvent();
+        FullDetails();
     }
 
-    public string GetTypeEvent()
+    public void SetTypeEvent()
     {
-        return "Lecture";
+        _type = "Lecture";
     }
 
-    public string FullDetails()
+    public void FullDetails()
     {
-        return $"Lecture: '{_title}' by {_speaker}\n{_description}\nCapacity: {_capacity} seats\nThe {_date} at {_time}\n{GetStrAddress()}\n";
+        _fullDetail = $"Full Details:\nLecture: '{_title}' by {_speaker}\n{_description}\nCapacity: {_capacity} seats\nThe {_date} at {_time}\n{GetStrAddress()}\n";
     }
 }

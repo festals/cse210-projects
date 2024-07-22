@@ -6,6 +6,8 @@ public class Event
     protected string _date;
     protected string _time;
     protected Address _address;
+    protected string _fullDetail;
+    protected string _type;
 
     public Event(string title, string description, string date, string time, Address address)
     {
@@ -24,12 +26,17 @@ public class Event
 
     public string DisplayStdDetails()
     {
-        return $"Standard Details: '{_title}': {_description}\nThe {_date} at {_time}\n{GetStrAddress()}\n";
+        return $"Standard Details:\n'{_title}': {_description}\nThe {_date} at {_time}\n{GetStrAddress()}\n";
     }
 
-        public string DisplayShortDescription()
+    public string DisplayShortDescription()
     {
-        return $"Short Description: : '{_title}', the {_date}\n";
+        return $"Short Description: {_type} : '{_title}', the {_date}\n";
+    }
+
+    public string DisplayFull()
+    {
+        return _fullDetail;
     }
 
 }
