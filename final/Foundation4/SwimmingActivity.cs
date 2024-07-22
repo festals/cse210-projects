@@ -11,14 +11,20 @@ public class SwimmingActivity : Activity
     {
         return _numLaps * 50 / 1000;
     }
+
     public override double CalculateSpeed()
     {
         return (CalculateDistance() / _length) * 60;
 
     }
+
     public override double CalculatePace()
     {
         return _length / (CalculateDistance());
     }
 
+    public override string GetActivity()
+    {
+        return "Swimming";
+    }
 }

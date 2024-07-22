@@ -11,14 +11,19 @@ public class CyclingActivity : Activity
     {
         return _length / 60 * _speed;
     }
+
     public override double CalculateSpeed()
     {
         return _speed;
-
     }
+
     public override double CalculatePace()
     {
         return 60 / _speed;
     }
 
+    public override string GetActivity()
+    {
+        return "Cycling";
+    }
 }

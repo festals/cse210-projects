@@ -21,5 +21,8 @@ public class RunningActivity : Activity
         return _length /_distance;
     }
 
-
+    public override string GetActivity()
+    {
+        return "Running";
+    }
 }
